@@ -2,7 +2,7 @@
     <div class="register-page">
         <img src="../assets/logo.png"  alt="logo" class="logo">
     <div class="register-form">
-      <h1>Đăng ký</h1>
+      <h1>ĐĂNG KÝ</h1>
       <v-form @submit.prevent="checkComfirmPassword">
         <div class="form-input">
           <label for="email">Email:</label>
@@ -20,7 +20,7 @@
               id="password"
               v-model="password"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="togglePasswordVisibility"
+              @click:append="togglePasswordVisibility('password')"
               class="input"
               required />
         </div>
@@ -32,7 +32,7 @@
               id="confirm-password"
               v-model="confirmPassword"
               :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
-              @click:append="togglePasswordVisibility"
+              @click:append="togglePasswordVisibility('confirmPassword')"
               class="input"
               required />
         </div>
@@ -65,9 +65,14 @@ export default {
       console.log(`Email: ${this.email},Username: ${this.username} , Password: ${this.password}, Confirm Password: ${this.confirmPassword}`)
       alert('Đăng ký thành công');
     },
-    togglePasswordVisibility() {
+    togglePasswordVisibility(field) {
+      if (field === 'password') {
         this.showPassword = !this.showPassword
+      } else if (field === 'confirmPassword') {
         this.showConfirmPassword = !this.showConfirmPassword
+      }
+
+
     }
   },
 };
@@ -119,6 +124,7 @@ export default {
 .button .register-btn{
   width: 50%;
   margin-bottom: 20px;
+  background: linear-gradient(to right, #FEA910, #FEA910, #FEA910);
 }
 .button .register-btn:hover{
   background: linear-gradient(45deg,  #f8c555, orange);
